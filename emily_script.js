@@ -264,9 +264,8 @@ for(var i=1;i<6;i++){
                 }
         }
     })
-    // console.log(dict);
-    dict = JSON.stringify(dict);
     
+    dict = JSON.stringify(dict);
     fs.writeFile(save_path, dict, 'utf8')
     
 }
