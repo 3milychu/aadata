@@ -9,14 +9,18 @@ var toTitleCase = function (str) {
 	return str.join(' ');
 };
 
-for(var i=1;i<6;i++){
+function format(n) {
+    return (n < 10) ? ("0" + n) : n;
+}
+
+for(var i=1;i<11;i++){
     
-    var file = i;
-    var content = fs.readFileSync('data/m0' + file + '.txt');
+    var file = format(i);
+    var content = fs.readFileSync('data/m' + file + '.txt');
     var $ = cheerio.load(content);
     var table = $('table').eq(2);
     var cell = table.find($('td'));
-    var save_path = 'parsed_data/parsed_m0' + file + '.json';
+    var save_path = 'parsed_data/parsed_m' + file + '.json';
     var dict = [];
     var constant = 0;
     var constant_2 = 0;
@@ -99,8 +103,10 @@ for(var i=1;i<6;i++){
                         tuesday_interests=details[tuesday_index+6];
                     }
                 }
-                if(details[tuesday_index+8].match(/Special/gi)){
+                if(details[tuesday_index+8]!=undefined){
+                    if(details[tuesday_index+8].match(/Special/gi)){
                     tuesday_interests=details[tuesday_index+9];
+                    }
                 }
             };
             
