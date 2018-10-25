@@ -19,6 +19,7 @@ for(var i=1;i<6;i++){
     var save_path = 'parsed_data/parsed_m0' + file + '.json';
     var dict = [];
     var constant = 0;
+    var constant_2 = 0;
     
     cell.each(function(i,elem){
        var value = i;
@@ -39,7 +40,7 @@ for(var i=1;i<6;i++){
                     id: id,
     				meeting_name: meeting_name,
     				location_name: location_name,
-    				meeting_address: meeting_address
+    				meeting_address: meeting_address,
     			});
         } 
         
@@ -53,6 +54,7 @@ for(var i=1;i<6;i++){
         var test = middle_cells.includes(value);
         
        if (test === true){
+           var id = constant_2++;
             var content = $(elem).contents().map(function() {
                 if (this.type === 'text' | this.nodeType == 1)
                     return $(this).text().trim()
@@ -138,10 +140,7 @@ for(var i=1;i<6;i++){
                 sunday_start = "";
                 sunday_end= "";
             }
-            
-            dict.push({
-                id: id,
-                meeting_times:{
+            dict[id].meeting_times = {
                     Monday: {
                         start: monday_start,
                         end: monday_end
@@ -171,7 +170,6 @@ for(var i=1;i<6;i++){
                         end: sunday_end
                     }
                 }
-            })
         }
     })
     // console.log(dict);
