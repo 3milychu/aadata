@@ -22,17 +22,20 @@ for(var i=1;i<6;i++){
         
     cell.each(function(i,elem){
         if(i%3 === 0 | i ===0 ){
-            var myKey = $(elem).children().eq(2).text().trim().toString();
-            var myContent = $(elem).contents().filter(function() {
+            var location_name = $('h4',elem).text();
+            console.log(location_name);
+            var meeting_name = $(elem).children().eq(2).text().trim().toString();
+            var meeting_address = $(elem).contents().filter(function() {
                     return this.type === 'text';
                 }).text().trim();
-            myContent = myContent.split(",")[0];
-            myKey = toTitleCase(myKey)
-            myKey= myKey.replace("-", "");
-            myKey = myKey.trim();
+            meeting_address = meeting_address.split(",")[0];
+            meeting_name = toTitleCase(meeting_name)
+            meeting_name= meeting_name.replace("-", "");
+            meeting_name = meeting_name.trim();
             dict.push({
-    				meeting_name: myKey,
-    				meeting_address: myContent
+    				meeting_name: meeting_name,
+    				location_name: location_name,
+    				meeting_address: meeting_address
     			});
         }
     })
