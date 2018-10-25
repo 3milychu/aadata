@@ -11,14 +11,14 @@ for (var x = 1; x < 10; x++){
     var file = x;
     var content = fs.readFileSync('data/m0' + file + '.txt');
     var $ = cheerio.load(content);
-    var save_path = 'test/rest_info_m0' + file + '.json';
+    var save_path = 'info/info_m0' + file + '.json';
     var dict = [];
 
 $('td').each(function(i,elem) {
     if ($(elem).attr("style")=="border-bottom:1px solid #e3e3e3;width:350px;") {
-        let rest_info = $(elem).children().remove('b').parent().text();
-        rest_info = rest_info.replace(/\s\s+/g, ' ');
-        dict.push(rest_info);
+        let info = $(elem).children().parent().text();
+        info = info.replace(/\s\s+/g, ' ');
+        dict.push(info);
         console.log(dict);
         }
     })
@@ -33,14 +33,14 @@ var x = 10;
 var file = x;
     var content = fs.readFileSync('data/m' + file + '.txt');
     var $ = cheerio.load(content);
-    var save_path = 'test/rest_info_m' + file + '.json';
+    var save_path = 'info/info_m' + file + '.json';
     var dict = [];
 
 $('td').each(function(i,elem) {
     if ($(elem).attr("style")=="border-bottom:1px solid #e3e3e3;width:350px;") {
-        let rest_info = $(elem).children().remove('b').parent().text();
-        rest_info = rest_info.replace(/\s\s+/g, ' ');
-        dict.push(rest_info);
+        let info = $(elem).children().parent().text();
+        info = info.replace(/\s\s+/g, ' ');
+        dict.push(info);
         console.log(dict);
         }
     })
