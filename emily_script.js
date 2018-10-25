@@ -21,9 +21,10 @@ for(var i=1;i<6;i++){
     var constant = 0;
     
     cell.each(function(i,elem){
+       var value = i;
         
         // get needed info from left-hand side cells
-        if(i%3 === 0 | i ===0 ){
+        if(i%3 === 0 | i===0 ){
             var id = constant++;
             var location_name = $('h4',elem).text();
             var meeting_name = $(elem).children().eq(2).text().trim().toString();
@@ -40,9 +41,18 @@ for(var i=1;i<6;i++){
     				location_name: location_name,
     				meeting_address: meeting_address
     			});
-    			
-        // get needed info from right-hand side cells
-        } else if (i%2 === 0){
+        } 
+        
+        // get needed info from middle cells
+        var middle_cells = [1];
+        var middle_start = 1;
+        for (i=0;i<50;i++){
+            middle_start = middle_start+3;
+            middle_cells.push(middle_start);
+        }
+        var test = middle_cells.includes(value);
+        
+       if (test === true){
             var content = $(elem).contents().map(function() {
                 if (this.type === 'text' | this.nodeType == 1)
                     return $(this).text().trim()
