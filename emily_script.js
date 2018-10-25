@@ -180,4 +180,3 @@ for(var i=1;i<6;i++){
     fs.writeFile(save_path, dict, 'utf8')
     
 }
-
