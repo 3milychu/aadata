@@ -13,7 +13,7 @@ function format(n) {
     return (n < 10) ? ("0" + n) : n;
 }
 
-for(var i=2;i<11;i++){
+for(var i=6;i<8;i++){
     
     var file = format(i);
     var content = fs.readFileSync('data/m' + file + '.txt');
