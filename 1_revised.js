@@ -9,7 +9,7 @@ var toTitleCase = function (str) {
 	return str.join(' ');
 };
 
-for(var i=6;i<7;i++){
+for(var i=1;i<2;i++){
     
     var file = i;
     var content = fs.readFileSync('data/m0' + file + '.txt');
@@ -293,7 +293,7 @@ for(var i=6;i<7;i++){
             var monday_meeting_times = new Array;
             // create a new key value pair for each monday listing
             for (var k=0; k < monday_indices.length; k++) {
-                monday_meeting_times.push('Monday:',{
+                monday_meeting_times.push({
                     start:monday_start[k],
                     end: monday_end[k],
                     details: {
@@ -308,7 +308,7 @@ for(var i=6;i<7;i++){
             var tuesday_meeting_times = new Array;
             // create a new key value pair for each monday listing
             for (var k=0; k < tuesday_indices.length; k++) {
-                tuesday_meeting_times.push('Tuesday:',{
+                tuesday_meeting_times.push({
                     start:tuesday_start[k],
                     end: tuesday_end[k],
                     details: {
@@ -317,13 +317,13 @@ for(var i=6;i<7;i++){
                     }
                 });
             }
-            console.log(tuesday_meeting_times);
+            // console.log(tuesday_meeting_times);
 
             //make an array with all Wednesday meeting times, print to console
             var wednesday_meeting_times = new Array;
             // create a new key value pair for each monday listing
             for (var k=0; k < wednesday_indices.length; k++) {
-                wednesday_meeting_times.push('Wednesday:',{
+                wednesday_meeting_times.push({
                     start:wednesday_start[k],
                     end: wednesday_end[k],
                     details: {
@@ -332,13 +332,13 @@ for(var i=6;i<7;i++){
                     }
                 });
             }
-            console.log(wednesday_meeting_times);
+            // console.log(wednesday_meeting_times);
 
             //make an array with all Thursday meeting times, print to console
             var thursday_meeting_times = new Array;
             // create a new key value pair for each monday listing
             for (var k=0; k < thursday_indices.length; k++) {
-                thursday_meeting_times.push('Thursday:',{
+                thursday_meeting_times.push({
                     start:thursday_start[k],
                     end: thursday_end[k],
                     details: {
@@ -347,13 +347,13 @@ for(var i=6;i<7;i++){
                     }
                 });
             }
-            console.log(thursday_meeting_times);      
+            // console.log(thursday_meeting_times);      
             
             //make an array with all Friday meeting times, print to console
             var friday_meeting_times = new Array;
             // create a new key value pair for each monday listing
             for (var k=0; k < friday_indices.length; k++) {
-                friday_meeting_times.push('Friday:',{
+                friday_meeting_times.push({
                     start:friday_start[k],
                     end: friday_end[k],
                     details: {
@@ -362,13 +362,13 @@ for(var i=6;i<7;i++){
                     }
                 });
             }
-            console.log(friday_meeting_times);   
+            // console.log(friday_meeting_times);   
         
              //make an array with all Friday meeting times, print to console
             var saturday_meeting_times = new Array;
             // create a new key value pair for each monday listing
             for (var k=0; k < saturday_indices.length; k++) {
-                saturday_meeting_times.push('Saturday:',{
+                saturday_meeting_times.push({
                     start:saturday_start[k],
                     end: saturday_end[k],
                     details: {
@@ -377,13 +377,13 @@ for(var i=6;i<7;i++){
                     }
                 });
             }
-            console.log(saturday_meeting_times);   
+            // console.log(saturday_meeting_times);   
 
             //make an array with all Sunday meeting times, print to console
             var sunday_meeting_times = new Array;
             // create a new key value pair for each monday listing
             for (var k=0; k < sunday_indices.length; k++) {
-                sunday_meeting_times.push('Sunday:',{
+                sunday_meeting_times.push({
                     start:sunday_start[k],
                     end: sunday_end[k],
                     details: {
@@ -392,7 +392,7 @@ for(var i=6;i<7;i++){
                     }
                 });
             }
-            console.log(sunday_meeting_times);   
+            // console.log(sunday_meeting_times);   
         
         
         
@@ -400,54 +400,13 @@ for(var i=6;i<7;i++){
         //how to put in these times corresponding to id?
         //for (var k=0; k<monday_indices.length; k++) {
             dict[id].meeting_times = {
-                    Tuesday: {
-                        start: tuesday_start[k],
-                        end: tuesday_end[k],
-                        details: {
-                            topic: tuesday_topic[k],
-                            interest: tuesday_interests[k] 
-                        }
-                    },
-                    Wednesday: {
-                        start: wednesday_start[k],
-                        end: wednesday_end[k],
-                        details: {
-                            topic: wednesday_topic,
-                            interest: wednesday_interests 
-                        }
-                    },
-                    Thursday: {
-                        start: thursday_start,
-                        end: thursday_end,
-                        details: {
-                            topic: thursday_topic,
-                            interest: thursday_interests 
-                        }
-                    },
-                    Friday: {
-                        start: friday_start,
-                        end: friday_end,
-                        details: {
-                            topic: friday_topic,
-                            interest: friday_interests 
-                        }
-                    },
-                    Saturday: {
-                        start: saturday_start,
-                        end: saturday_end,
-                        details: {
-                            topic: saturday_topic,
-                            interest: saturday_interests 
-                        }
-                    },
-                    Sunday: {
-                        start: sunday_start,
-                        end: sunday_end,
-                        details: {
-                            topic: sunday_topic,
-                            interest: sunday_interests 
-                        }
-                    }
+                    Monday: monday_meeting_times,
+                    Tuesday: tuesday_meeting_times,
+                    Wednesday: wednesday_meeting_times,
+                    Thursday: thursday_meeting_times,
+                    Friday: friday_meeting_times,
+                    Saturday: saturday_meeting_times,
+                    Sunday: sunday_meeting_times
                 }
         }
     })
