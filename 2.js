@@ -4,16 +4,20 @@ var async = require('async');
 var apiKey = process.env.TAMU_KEY;
 console.log(apiKey);
 
-for (var i=1;i<2;i++){
+function format(n) {
+    return (n < 10) ? ("0" + n) : n;
+}
+
+for (var i=10;i<11;i++){
     getgeodata(i);
 }
 
 function getgeodata (i){
-    var file = i;
+    var file = format(i);
     // Load data from json
     var addresses = [];
-    var json = fs.readFileSync("parsed_data/test_parsed_m0"+file+".json");
-    var save_path = "parsed_data/parsed_m0"+file+"_geo.json";
+    var json = fs.readFileSync("parsed_data/parsed_m"+file+".json");
+    var save_path = "parsed_data/parsed_m"+file+"_geo.json";
     var data = JSON.parse(json);
     var result = [];
     
