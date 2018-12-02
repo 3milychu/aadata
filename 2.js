@@ -8,7 +8,7 @@ function format(n) {
     return (n < 10) ? ("0" + n) : n;
 }
 
-for (var i=4;i<5;i++){
+for (var i=10;i<11;i++){
     getgeodata(i);
 }
 
