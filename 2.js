@@ -8,7 +8,7 @@ function format(n) {
     return (n < 10) ? ("0" + n) : n;
 }
 
-for (var i=6;i<8;i++){
+for (var i=2;i<11;i++){
     getgeodata(i);
 }
 
@@ -25,13 +25,25 @@ function getgeodata (i){
     for(var i in data)
     result.push(data[i]);
     
-    for (var i in data) {
+    
+    for (i in data) {
         var address = data[i].meeting_address;
-        addresses.push(address);
+        var zip;
+        if (data[i].zip == null) {
+            zip = "";
+        } else {
+            zip = data[i].zip;
+        }
+        addresses.push({
+            address: address,
+            zip: zip});
     }
     
     // test with one address
-    // addresses.push(data[0].meeting_address);
+    // addresses.push({
+    //     address: data[0].meeting_address,
+    //     zip: data[0].zip,
+    // });
     console.log(addresses);
     
     // // eachSeries in the async module iterates over an array and operates on each item in the array in series
@@ -39,20 +51,20 @@ function getgeodata (i){
         var id = constant++;
         console.log(id);
         var apiRequest = 'https://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx?';
-        apiRequest += 'streetAddress=' + value.split(' ').join('%20');
-        apiRequest += '&city=New%20York&state=NY&apikey=' + apiKey;
+        apiRequest += 'streetAddress=' + value['address'].split(' ').join('%20');
+        apiRequest += '&city=New%20York&state=NY';
+        apiRequest += '&zip=' + value['zip'];
+        apiRequest += '&apikey=' + apiKey;
         apiRequest += '&format=json&version=4.01';
         request(apiRequest, function(err, resp, body) {
             if (err) {throw err;}
             else {
-                
-                // access deeply nested OutputGeocode
                 var obj = JSON.parse(body);
                 var lat = obj['OutputGeocodes'][0]['OutputGeocode']['Latitude'];
                 var lng = obj['OutputGeocodes'][0]['OutputGeocode']['Longitude'];
                 
                 // Push to meetingsData array
-               result[id].latlong = {
+              result[id].latlong = {
                     lat: lat,
                     lng: lng
     			    };

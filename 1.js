@@ -13,7 +13,7 @@ function format(n) {
     return (n < 10) ? ("0" + n) : n;
 }
 
-for(var i=6;i<8;i++){
+for(var i=1;i<11;i++){
     
     var file = format(i);
     var content = fs.readFileSync('data/m' + file + '.txt');
@@ -35,6 +35,8 @@ for(var i=6;i<8;i++){
             var meeting_address = $(elem).contents().filter(function() {
                     return this.type === 'text';
                 }).text().trim();
+            var meeting_zip = meeting_address.match(/\d{5}/g);
+            meeting_zip = parseInt(meeting_zip, 10);
             meeting_address = meeting_address.split(",")[0];
             meeting_name = toTitleCase(meeting_name)
             meeting_name= meeting_name.replace("-", "");
@@ -44,6 +46,7 @@ for(var i=6;i<8;i++){
     				meeting_name: meeting_name,
     				location_name: location_name,
     				meeting_address: meeting_address,
+    				zip: meeting_zip
     			});
         } 
         
