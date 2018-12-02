@@ -8,7 +8,7 @@ function format(n) {
     return (n < 10) ? ("0" + n) : n;
 }
 
-for (var i=2;i<11;i++){
+for (var i=4;i<5;i++){
     getgeodata(i);
 }
 
@@ -24,7 +24,6 @@ function getgeodata (i){
     
     for(var i in data)
     result.push(data[i]);
-    
     
     for (i in data) {
         var address = data[i].meeting_address;
