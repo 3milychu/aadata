@@ -51,7 +51,7 @@ function getgeodata (i){
         console.log(id);
         var apiRequest = 'https://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx?';
         apiRequest += 'streetAddress=' + value['address'].split(' ').join('%20');
-        apiRequest += '&city=New%20York&state=NY';
+        apiRequest += '&city=New%20York%20City&state=NY';
         apiRequest += '&zip=' + value['zip'];
         apiRequest += '&apikey=' + apiKey;
         apiRequest += '&format=json&version=4.01';
